@@ -25,8 +25,7 @@ function App() {
   const chartRef = useRef(null);
 
   // ✅ Live backend base URL from env
-const apiBaseUrl = "https://smartphone-image-api.onrender.com";
-
+const apiBaseUrl = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
