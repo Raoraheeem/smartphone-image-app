@@ -122,7 +122,9 @@ app.get('/analyze/:type/:filename', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
+app.get('/', (req, res) => {
+  res.send('✅ Smartphone Image App API is running!');
+});
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
