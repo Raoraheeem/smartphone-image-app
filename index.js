@@ -1,3 +1,4 @@
+// Load environment variables
 require('dotenv').config();
 
 const express = require('express');
@@ -52,11 +53,6 @@ const uploadFolder = path.join(__dirname, 'public/uploads');
 if (!fs.existsSync(uploadFolder)) {
   fs.mkdirSync(uploadFolder, { recursive: true });
 }
-
-// ✅ Root route for Render testing
-app.get('/', (req, res) => {
-  res.send('✅ Smartphone Image App API is running!');
-});
 
 // Upload Route
 app.post('/upload', upload.single('image'), async (req, res) => {
@@ -125,11 +121,6 @@ app.get('/analyze/:type/:filename', async (req, res) => {
     console.error('❌ Analysis error:', err);
     res.status(500).json({ error: err.message });
   }
-});
-
-// ✅ Catch-all route for undefined endpoints
-app.use('*', (req, res) => {
-  res.status(404).json({ error: 'Route not found' });
 });
 
 // Start server
